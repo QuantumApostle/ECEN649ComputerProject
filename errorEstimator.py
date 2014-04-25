@@ -1,4 +1,6 @@
-from classRules import *
+#from classRules import *
+from classifiers import * #Yixin
+
 class errorEstimator:
     def resubstitution(self, classRule, trainLabel, trainData, featureData):
         # myClassRule = classRules()
@@ -55,7 +57,8 @@ class errorEstimator:
                 newTrainData.append(transformedFeatureData[j])
             # print len(newTrainLabel[0]), len(newTrainData[0])
             predictRet = classRule(newTrainLabel, newTrainData, transformedFeatureData[i])
-            # print len(predictRet)
+            print predictRet
+            
             for ret in predictRet:
                 error = error + abs(int(ret) - int(trainLabel[i]))
         jValue = 1 - 1.0 / len(trainLabel) * error
