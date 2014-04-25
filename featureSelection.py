@@ -1,16 +1,13 @@
 import csv
 import itertools
-#from classRules import *
-from classifiers import * #Yixin
-
+from classRules import *
 class featureSelection:
     def seqFwdSearch(self, trainFeatureName, trainData, trainFeatureList, trainLabel, totalK, creterionFunc):
         # preserve the original lists
         thisTrainFeatureName = trainFeatureName
         thisTrainFeatureList = trainFeatureList
-        myClassRules = classifiers() #Yixin
-        #myClassRules = classRules()
-        featureList = []	
+        myClassRules = classRules()
+        featureList = []
         featureNoList = []
         k = 0
         d = len(trainData)
@@ -72,9 +69,7 @@ class featureSelection:
         
     #self, trainFeatureName, trainData, trainFeatureList, trainLabel, totalK, creterionFunc
     def exhSearch(self, trainFeatureName, trainData, trainFeatureList, trainLabel, totalK, creterionFunc):
-        #myClassRules = classRules()
-	myClassRules = classifiers() #Yixin
-
+        myClassRules = classRules()
         featureList = []
         featureNoList = []
         n = len(trainFeatureList)
