@@ -15,13 +15,14 @@ class featureSelection:
             totalK = d
         roundNo = 1
         while True:
-            print 'this is', roundNo, 'round'
+            # print 'this is', roundNo, 'round'
             roundNo = roundNo + 1
             # classRule, trainLabel, trainData, featureData
-            print 'calculating maxJ for the first time'
+            # print 'calculating maxJ for the first time'
             # print len(featureList + trainFeatureList[0])
             # currentFeatureList = featureList
             if len(featureList) != 0:
+                # print featureList
                 newFeatureList = []
                 for feature in featureList:
                     newFeatureList.append(feature)
@@ -30,15 +31,16 @@ class featureSelection:
             else:
                 maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, [thisTrainFeatureList[0]])
             # print len(featureList)
-            print 'maxJ value is:', maxJ
+            # print 'maxJ value is:', maxJ
             bestFeatureNo = 0
-            featureNo = 0
+            featureNo = 1
             for feature in thisTrainFeatureList[1: ]:
+                # print 'doing the feature number:', featureNo, thisTrainFeatureName[featureNo]
                 # print feature
                 if featureNo in featureNoList:
-                    print 'continue'
+                    # print 'continue'
                     continue
-                print 'now computing feature number:', featureNo
+                # print 'now computing feature number:', featureNo
                 if len(featureList) != 0:
                     newFeatureList = []
                     for features in featureList:
@@ -46,18 +48,22 @@ class featureSelection:
                     newFeatureList.append(feature)
                     jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, newFeatureList)
                 else:
+                    # print 'no feature yet'
                     jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, [feature])
+                # print 'jValue is:', jValue
                 if jValue > maxJ:
                     maxJ = jValue
                     bestFeatureNo = featureNo
+                    # print maxJc
                 featureNo = featureNo + 1
             featureNoList.append(thisTrainFeatureName[bestFeatureNo])
             featureList.append(thisTrainFeatureList[bestFeatureNo])
             del thisTrainFeatureList[bestFeatureNo]
             del thisTrainFeatureName[bestFeatureNo]
-            print len(thisTrainFeatureList), len(thisTrainFeatureName)
-            print featureNoList, featureList
+            # print len(thisTrainFeatureList), len(thisTrainFeatureName)
+            # print featureNoList, featureList
             if len(featureNoList) == totalK:
+                print 'maxJ when totalK is', totalK, ':', maxJ
                 break
         return featureNoList
         
@@ -70,20 +76,21 @@ class featureSelection:
         combinationTuples = self.getCombinations(n, totalK)
         # print len(combinationTuples), type(combinationTuples), type(combinationTuples[0])
         combinationList = [list(i) for i in combinationTuples]
-        print len(combinationList), type(combinationList), type(combinationList[0]), len(combinationList[0]), type(combinationList[0][0])
+        # print len(combinationList), type(combinationList), type(combinationList[0]), len(combinationList[0]), type(combinationList[0][0])
         # featureNoList = [trainFeatureName[i] for i in combinationList[0]]
         # print featureNoList
         featureNoList = combinationList[0]
         featureList = [trainFeatureList[featureNo] for featureNo in featureNoList]
         maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList)
-        print maxJ
+        # print maxJ
         for combination in combinationList[1 : ]:
             featureList = [trainFeatureList[featureNo] for featureNo in combination]
             jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList)
             if jValue > maxJ:
                 featureNoList = combination
                 maxJ = jValue
-        featureNameList = [trainFeatureName[i] for i in featureNoList]    
+        featureNameList = [trainFeatureName[i] for i in featureNoList]  
+        print 'maxJ when totalK is', totalK, ':', maxJ
         return featureNameList
     
     def getCombinations(self, n, totalK):
