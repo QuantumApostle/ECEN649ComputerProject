@@ -1,0 +1,74 @@
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{multirow}
+\author{Lu Gao, Yixin Geng}
+\title{ECEN649 Computer Project Report}
+\date{}
+
+\begin{document}
+	\maketitle
+	\section{Introduction}
+		In this project, we separate the task of recognizing the 'good-prognosis' and 'poor-prognosis' into three parts and developed the corresponding modules: feature selection (Exhaustive search, sequential forward search), error estimator (resubstitution, Leave-one-out cross-validation) and classification rules (Diagonal LDA, 3NN, Linear SVM) using Python 2.7.
+	
+	
+	\section{Results}
+		To illustrate our result we use the following tables:
+
+\begin{table}[ht]
+\caption{Exhautive Search using Resub.}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{} & \multicolumn{3}{|c}{DLDA}                                                                                                                                                & \multicolumn{3}{|c}{3NN}                                                                                                                                               & \multicolumn{3}{|c|}{LSVM}                                                                                                                                             \\ \cline{2-10} 
+                  & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est. \\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real \\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est.\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est.\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real\\ errors\end{tabular} \\ \hline
+1 gene            &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+2 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+3 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{Exhautive Search using LOOCV}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{} & \multicolumn{3}{|c}{DLDA}                                                                                                                                                & \multicolumn{3}{|c}{3NN}                                                                                                                                               & \multicolumn{3}{|c|}{LSVM}                                                                                                                                             \\ \cline{2-10} 
+                  & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est. \\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real \\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est.\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est.\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real\\ errors\end{tabular} \\ \hline
+1 gene            &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+2 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+3 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{Sequential Forward Search using Resub.}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{} & \multicolumn{3}{|c}{DLDA}                                                                                                                                                & \multicolumn{3}{|c}{3NN}                                                                                                                                               & \multicolumn{3}{|c|}{LSVM}                                                                                                                                             \\ \cline{2-10} 
+                  & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est. \\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real \\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est.\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est.\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real\\ errors\end{tabular} \\ \hline
+1 gene            &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+2 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+3 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+4 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+5 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{Sequential Forward Search using LOOCV}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{} & \multicolumn{3}{|c}{DLDA}                                                                                                                                                & \multicolumn{3}{|c}{3NN}                                                                                                                                               & \multicolumn{3}{|c|}{LSVM}                                                                                                                                             \\ \cline{2-10} 
+                  & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est. \\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real \\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est.\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}picked\\ genes\end{tabular} & \begin{tabular}[c]{@{}c@{}}est.\\ errors\end{tabular} & \begin{tabular}[c]{@{}c@{}}real\\ errors\end{tabular} \\ \hline
+1 gene            &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+2 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+3 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+4 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+5 genes           &                                                        &                                                        &                                                        &                                                        &                                                       &                                                       &                                                        &                                                       &                                                       \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Analysis}
+		
+\section{Python Code}
+
+	
+\end{document}
